@@ -1,0 +1,296 @@
+﻿.sidebar {
+    display: flex;
+    flex-direction: column;
+    background: #511aaa;
+    color: white;
+}
+
+    .sidebar .header {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #1a6baa;
+        align-items: center;
+        height: 50px;
+        padding: 10px;
+    }
+
+        .sidebar .header h5 {
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+    .sidebar #users-list .user {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .sidebar .user-search {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 50px;
+        background: #f2f2f2;
+        margin-top: auto;
+    }
+
+        .sidebar .user-search input {
+            width: 100%;
+            height: 50px;
+            border: 2px solid #f2f2f2;
+            border-radius: 0;
+            background: #f2f2f2;
+            margin-right: 5px;
+            text-indent: 10px;
+            text-overflow: ellipsis;
+        }
+
+.main-content {
+    border-right: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+    .main-content .header {
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+    }
+
+        .main-content .header h5 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+            .main-content .header h5:before {
+                content: "#";
+            }
+
+    .main-content .chat-body {
+        overflow-y: auto;
+        flex-grow: 1;
+        padding: 10px;
+    }
+
+    .main-content .chat-input {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        background: #f2f2f2;
+    }
+
+        .main-content .chat-input input {
+            width: 100%;
+            border: none;
+            height: 50px;
+            border-radius: 0;
+            border-top: 1px solid #eee;
+            background: #f2f2f2;
+            margin-top: auto;
+            text-indent: 10px;
+        }
+
+        .main-content .chat-input .actions {
+            padding: 0 10px;
+        }
+
+            .main-content .chat-input .actions i {
+                color: #aaa;
+                cursor: pointer;
+            }
+
+                .main-content .chat-input .actions i:hover {
+                    color: #555;
+                }
+
+            .main-content .chat-input .actions label {
+                margin-bottom: 0;
+            }
+
+.chat-message {
+    margin: 10px;
+    min-width: 200px;
+}
+
+    .chat-message .message-content {
+        background: #f5f5f5;
+        padding: 3px 8px;
+        border: 1px solid #eee;
+        border-radius: 2px;
+        color: #777;
+        min-width: 220px;
+        max-width: 500px;
+    }
+
+        .chat-message .message-content span {
+            color: #777;
+        }
+
+        .chat-message .message-content .author {
+            color: #7469b4;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .chat-message .message-content .content {
+            display: block;
+            padding: 2px 0;
+        }
+
+        .chat-message .message-content .timestamp {
+            font-size: 12px;
+            color: #999;
+            float: right;
+            line-height: 21px;
+            margin: 0 5px;
+        }
+
+.ismine {
+    flex-direction: row-reverse;
+}
+
+    .ismine .message-content {
+        background: #7469b4;
+    }
+
+        .ismine .message-content .author,
+        .ismine .message-content .timestamp,
+        .ismine .message-content .timestamp span,
+        .ismine .message-content .content {
+            color: white;
+        }
+
+        .ismine .message-content div {
+            flex-direction: row-reverse;
+        }
+
+    .ismine .message-avatar {
+        margin-right: 0;
+        margin-left: 10px;
+    }
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+}
+
+    .search-container input {
+        border: 1px solid #f2f2f2;
+        border-radius: 0;
+        background: white;
+        text-indent: 10px;
+    }
+
+    .search-container button {
+        border-radius: 0;
+        background: #511aaa;
+    }
+
+    .search-container .message-content {
+        background: #f5f5f5;
+        padding: 3px 8px;
+        border: 1px solid #eee;
+        border-radius: 2px;
+        color: #777;
+        min-width: 220px;
+        max-width: 500px;
+    }
+
+        .search-container .message-content .author {
+            color: #1a6baa;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .search-container .message-content .content {
+            display: block;
+            padding: 2px 0;
+        }
+
+        .search-container .message-content .timestamp {
+            font-size: 12px;
+            color: #999;
+            float: right;
+            line-height: 21px;
+            margin: 0 5px;
+        }
+
+.input-icon {
+    position: absolute;
+    left: 3px;
+    top: calc(50% - 0.5em); /* Keep icon in center of input, regardless of the input height */
+}
+
+input {
+    padding-left: 17px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+body {
+    background: #eee;
+}
+
+.app {
+    display: flex;
+    height: 100vh;
+    justify-content: space-between;
+    background: white;
+    border: 1px solid #ccc;
+}
+
+    .app .sidebar {
+        width: 200px;
+    }
+
+    .app .main-content {
+        flex-grow: 1;
+    }
+
+    .app .search-container {
+        width: 300px;
+    }
+
+.login-container,
+.register-container {
+    width: 350px;
+    background: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    background: white;
+    margin: auto;
+}
+
+    .login-container h4,
+    .register-container h4 {
+        font-weight: 400;
+    }
+
+.register-container {
+    width: 450px;
+}
+
+.btn-sign-in,
+.btn-sign-up {
+    width: 100%;
+    background: #5d8a9e;
+    color: white;
+    font-weight: 500;
+}
+
+.alert-dismissible {
+    position: fixed;
+    width: 500px;
+    right: 25px;
+    top: 25px;
+}

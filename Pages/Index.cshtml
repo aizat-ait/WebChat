@@ -1,0 +1,83 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="d-flex flex-column justify-content-center align-items-center vh-100" data-bind="css: isLoading() ? 'd-flex' : 'd-none'">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
+<div class="app d-none" data-bind="css: isLoading() ? 'd-none' : ''">
+    <div class="sidebar">
+        <div class="header">
+            <h5>Welcome <span asp-area="Identity" data-bind="text: myName"></span></h5>
+            <div>
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/" method="post">
+                    <button type="submit" class="btn-sign-out"><i class="fas fa-sign-out-alt"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="header">Who's here</div>
+        <ul id="users-list" class="list-unstyled" data-bind="foreach: filteredChatUsers">
+            <li>
+                <div class="user">
+                    <div class="right-side">
+                        @*<input type="hidden" class="username" data-bind="value: $data.userName" />*@
+                        <span class="author" data-bind="text: $data.userName"></span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="user-search">
+            <input type="text" class="" placeholder="Search someone..." data-bind="value: filter, valueUpdate: 'afterkeydown'" />
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="chat-body">
+            <ul class="list-unstyled" data-bind="foreach: chatMessages">
+                <li>
+                    <div class="chat-message d-flex" data-bind="css: $data.isMine() === true ? 'ismine' : ''">
+                        <div class="message-content d-flex flex-column">
+                            <div class="d-flex justify-content-between">
+                                <span class="author" data-bind="text:$data.from"></span>
+                                <span class="timestamp">
+                                    <i class="far fa-clock"></i>
+                                    <span data-bind="text:$data.timestamp"></span>
+                                </span>
+                            </div>
+                            <span class="content" data-bind="html:$data.content"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="chat-input">
+            <input id="chat-message" type="text" value="" data-bind="value:message, valueUpdate: 'afterkeydown', event: { keypress: onEnter }" placeholder="What's on your mind?" />
+            <div class="actions d-flex align-items-center">
+                <i class="fas fa-paper-plane" id="btn-send-message" data-bind="click: sendNewMessage"></i>
+            </div>
+        </div>
+    </div>
+    <div class="search-container">
+        <input type="text" placeholder="Name to search?" data-bind="value:searchByUser, valueUpdate: 'afterkeydown', event: { keypress: onEnter }" />
+        <input type="text" id="date" placeholder="Daterange to search?" data-bind="value:searchByDateRange, valueUpdate: 'afterkeydown', event: { keypress: onEnter }" />
+        <button class="btn btn-secondary" data-bind="click: messageHistorySearch">Search</button>
+        <ul class="list-unstyled" data-bind="foreach: chatMessagesSearch">
+            <li>
+                <div class="message-content d-flex flex-column">
+                    <div class="d-flex justify-content-between">
+                        <span class="author" data-bind="text:$data.from"></span>
+                        <span class="timestamp">
+                            <i class="far fa-clock"></i>
+                            <span data-bind="text:$data.timestamp"></span>
+                        </span>
+                    </div>
+                    <span class="content" data-bind="html:$data.content"></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
